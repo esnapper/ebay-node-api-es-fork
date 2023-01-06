@@ -63,9 +63,9 @@ const getMultipleItems = function (options) {
 /**
   * @method getSingleItem {Function}
   * Retrieves publicly visible details about one listing on eBay.
-  * @param {String} itemId (required)
+  * @param {String | Object} input (required)
   */
-const getSingleItem = function (itemId) {
+const getSingleItem = function (input) {
     if (!input || (typeof input !== 'object' && typeof input !== 'string'))
         throw new Error('invalid_request_error -> Invalid input');
     // To preserve backwards compatibility

@@ -62,7 +62,9 @@ const searchItems = function (searchConfig) {
     if (searchConfig.fieldgroups !== undefined) queryParam = queryParam + '&fieldgroups=' + searchConfig.fieldgroups;
     if (searchConfig.filter !== undefined) queryParam = queryParam + '&filter=' + encodeURLQuery(makeString(searchConfig.filter, { quotes: 'no', braces: 'false' }));
     queryParam = queryParam + (searchConfig.aspect_filter ? '&aspect_filter=' + encodeURLQuery(makeString(searchConfig.aspect_filter, { quotes: 'no', braces: 'false' })) : '');
+    queryParam = queryParam + (searchConfig.compatibility_filter ? '&compatibility_filter=' + encodeURLQuery(makeString(searchConfig.compatibility_filter, { quotes: 'no', braces: 'false' })) : '');
     this.options.contentType = 'application/json';
+    // console.log(`DEV: Final API search queryParam: ${queryParam}`);
     return new Promise((resolve, reject) => {
         makeRequest(this.options, `/buy/browse/v1/item_summary/search?${(queryParam)}`, 'GET', auth).then((result) => {
             resolve(result);
